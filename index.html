@@ -6,7 +6,7 @@ dark-theme: true
 home: true
 hero-title: It's time to fix Democracy.<br><small class="smallHero">Vote to <span class="smallHeroEmphasis bold">Flux The System!</span></small>
 hero-copy: |
-  <em>Flux is Australia's <a href='/transparency/'>most transparent political party</a>.</em><br><br>
+  <em>Flux is Australia's <a href='/transparency/' style="text-decoration: underline;">most transparent political party</a>.</em><br><br>
   When did our politics become so broken? Things must change. Flux is your
   way to participate directly in parliament. Empowering people in government decisions
   directly through technology. Let’s break up the party politics, end the gridlock
@@ -91,7 +91,7 @@ social-media:
         </p>
         <div class="md-flex">
           <div class="lg-col-6 md-col-12">
-            <a href="{{site.baseurl}}/signup" class="btn btn-primary h2 letter-spacing-1 border-bottom inline-block">
+            <a href="{{site.baseurl}}/signup/?utm_content=hero~{{ page.url | slugify }}" class="btn btn-primary h2 letter-spacing-1 border-bottom inline-block">
               {{ page.hero-action }}
             </a>
             <span class="gray h3 block caps mt1 letter-spacing-1">Membership is free for life</span>
@@ -128,7 +128,7 @@ social-media:
       <!--<div class="md-flex flex-end">-->
         <!--<a href="https://fundrazr.com/fluxpartynsw?utm_source=mainsite_banner" class="btn btn-primary col-12 md-col-4 center inline-block">Donate Now (NSW)</a>-->
         <!--<div class="my0 py0 pt1 col-12 md-col-4 align-bottom h2 xs-hide sm-hide" style="text-align: center;">Next Milestone</div>-->
-        <!--<a href="/signup?utm_source=mainsite_banner" class="btn btn-outline col-12 md-col-4 center inline-block xs-hide sm-hide">Join Flux</a>-->
+        <!--<a href="/signup/?utm_content=ann-banner~{{ page.url | slugify }}" class="btn btn-outline col-12 md-col-4 center inline-block xs-hide sm-hide">Join Flux</a>-->
       <!--</div>-->
       <!--<div class="rounded mt1 bg-accent-muted white relative" style="min-height: 2rem; height: 2rem" id="donation-progress-outer">-->
         <!--<div class="rounded inline-block absolute top-0 align-middle bg-accent min-h-100"-->
@@ -142,20 +142,18 @@ social-media:
   <!--</div>-->
 <!--</section>-->
 
-
 <!-- CANDIDATES -->
-<!--
-{% if site.candidates-nsw-2019 %}
+{% if site.candidates-federal-2019 %}
 <section class="bg-near-white dark-gray pt4 pb3 sm-pr4 col-12 overflow-hidden">
   <div class="max-width-4 mx-auto px2 sm-px3">
     {% include components/main-heading.html
-      text="Meet the lead candidates for NSW"
+      text="Meet the lead candidates for the Federal Election"
       font-size="h0 line-height-2"
       font-weight="bold" %}
     {% include components/hr-muted.html classes="mb3"%}
       <div class="mb3 mxn2">
         <div id="js-candidates">
-          {% assign candidates =  site.candidates-nsw-2019 |  where: "lead", true %}
+          {% assign candidates = site.candidates-federal-2019 | where: "lead", true %}
           {% for candidate in candidates %}
             {% capture snippet %} {{ candidate.bio | first | truncatewords: 50 }} {% endcapture %}
             {% include candidates/candidate-card-state.html
@@ -169,12 +167,11 @@ social-media:
         </div>
       </div>
       <div class="right-align mt2">
-        <a href="{{site.baseurl}}/nsw/candidates/2019" class="h3 border-bottom">See all candidates</a>
+        <a href="{{site.baseurl}}/federal/candidates/2019" class="h3 border-bottom">See all candidates</a>
       </div>
   </div>
 </section>
 {% endif %}
--->
 
 
 {% if page.video %}
@@ -199,7 +196,7 @@ social-media:
           <div class="mb3">
             <a data-sumome-share-id="b6279140-56da-424e-9e95-54d26518c49d"></a>
           </div>
-        <a href="{{site.baseurl}}/signup" class="btn btn-primary h2">
+        <a href="{{site.baseurl}}/signup/?utm_content=nutshell~{{ page.url | slugify }}" class="btn btn-primary h2">
           Join Now!
         </a>
       </div>
@@ -363,7 +360,7 @@ social-media:
         </p>
       </div>
       <div class="gray">
-        <a href="{{site.baseurl}}/signup"
+        <a href="{{site.baseurl}}/signup/?utm_content=fed-up~{{ page.url | slugify }}"
            class="h3 sm-h2 link-reset border-bottom inline-block accent">
           {{ page.second-callout-action }}
         </a>

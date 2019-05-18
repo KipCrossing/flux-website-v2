@@ -72,11 +72,39 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-62282050-2', 'auto');
-    ga('send', 'pageview');
+    (function() {
+      var win = window;
+      var removeUtms = function(){
+        var location = win.location;
+        if (location.search.indexOf('utm_') != -1 && history.replaceState) {
+          history.replaceState({}, '', window.location.toString().replace(/(\&|\?)utm([_a-z0-9=\-~]+)/g, ""));
+        }
+      };
+      ga('send', 'pageview', { 'hitCallback': removeUtms });
+    })();
   </script>
   <!-- Google Analytics end -->
 
-  <script src="https://members.flux.party/js/common.js"></script>
+  <!-- Global site tag (gtag.js) - Google Ads: 766794794 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-766794794"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-766794794');
+  </script>
+
+  <!-- Event snippet for Joined Flux conversion page; call gtag_report_singup_submission on signup. -->
+  <script>
+    function gtag_report_singup_submission(url) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-766794794/ZFTfCPfb4J0BEKq40e0C',
+      });
+      return false;
+    }
+  </script>
+
+  <script src="https://app.flux.party/js/common.js"></script>
   <script src="/js/bundle-reactSignup.js"></script>
 </body>
 </html>

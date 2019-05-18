@@ -40,10 +40,25 @@ nav-order: 40
             <hr>
 
             <h1 id='membership'>Membership</h1>
-            <h3 ng-repeat="days in flux.growthDays track by $index">Membership growth over last {{'days' | angular}}
-              days: {{'(flux.growthStat(days) * 100).toString().slice(0,4)' | angular}}%</h3>
+
+            <h3>Membership Growth</h3>
+            <table>
+              <tr>
+                <th>Over last <strong>N</strong> 24 hr periods</th>
+                <th>Absolute</th>
+                <th>Percentage</th>
+              </tr>
+              <tr ng-repeat="days in flux.growthDays track by $index">
+                <td style="padding: 0">{{ 'days' | angular }}</td>
+                <td style="padding: 0">{{ 'flux.growthAbsolute(days)' | angular }}</td>
+                <td style="padding: 0">{{ '(flux.growthStat(days) * 100).toString().slice(0,4)' | angular }} %</td>
+              </tr>
+            </table>
 
             <div id="membershipChart" class="col-sm-12 graph-div"></div>
+            <div id="memberSignupHoursAgo" class="col-sm-12 graph-div"></div>
+            <div id="memberSignupDaysAgo" class="col-sm-12 graph-div"></div>
+            <!--<div id="memberSingupsDailyLongTerm" class="col-sm-12 graph-div"></div>-->
             <div id="stateSignupTimes" class="col-sm-12 graph-div"></div>
             <div id="memberDobYearChart" class="col-sm-12 graph-div"></div>
 
@@ -51,8 +66,6 @@ nav-order: 40
             <div>Members born in or after 1981: {{ 'flux.after1981Pct' | angular }}%</div>
 
             <div id="memberStateChart" class="col-sm-12 graph-div"></div>
-            <div id="memberSignupDaysAgo" class="col-sm-12 graph-div"></div>
-            <div id="memberSignupHoursAgo" class="col-sm-12 graph-div"></div>
             <div id="memberDayPopularity" class="col-sm-12 graph-div"></div>
             <div id="memberHourPopularity" class="col-sm-12 graph-div"></div>
 
@@ -63,30 +76,20 @@ nav-order: 40
             <hr>
 
             <h1 id="donations"><br><br>
-              <small><a href="/donate">Donate Now!</a></small>
+              <small><a href="/donate/?utm_content=d0~{{ page.url | slugify }}">Donate Now!</a></small>
               <br><br>Donations
             </h1>
 
-            <h3>You can view a log of donations on our <a href="/donate">Donate</a> page as well as below.</h3>
+            <h3>You can view a log of donations on our <a href="/donate/?utm_content=d1~{{ page.url | slugify }}">Donate</a> page as well as below.</h3>
 
             <!-- disclaimer also goes on donate.html verbatim -->
             <small>
               <p>
-                <strong>Disclaimer re donation log:</strong> Donations (as of Sept 2018) are made to the Flux Foundation
-                and tagged for use by different branches.
-                In some cases this means a corresponding donation does not appear on party disclosure statements, or
-                appears as part of a bulk donation from the Flux Foundation.
-                That said, depending on jurisdiction such a donation might appear on the Foundation's disclosure
-                statement.
-                Furthermore, it might not appear on any disclosure statement if those funds are used for general things
-                not directly related to the individual branch (e.g. paying our AWS bill).
-                In any case, be aware this donation log is a best-effort attempt at transparency, not a replacement for,
-                substitute for, or even an indication of our official disclosures.
-                No data on this page regarding donations comes with any guarantee of accuracy.
+                {% include donate/disclaimer.html %}
               </p>
             </small>
 
-            <h4 class="center p2"><a href="/donate">Donate Now!</a></h4>
+            <h4 class="center p2"><a href="/donate/?utm_content=d2~{{ page.url | slugify }}">Donate Now!</a></h4>
 
             <h2> Donations This FY </h2>
 
@@ -94,13 +97,14 @@ nav-order: 40
             <div id="donationGraphCumulativeFY" class="col-sm-12 graph-div"></div>
             <div id="donationGraphCumulativeStateFY" class="col-sm-12 graph-div"></div>
 
-            <h4 class="center p2"><a href="/donate">Donate Now!</a></h4>
+            <h4 class="center p2"><a href="/donate/?utm_content=d3~{{ page.url | slugify }}">Donate Now!</a></h4>
 
             <h2> All Donations since Sept 2017 </h2>
 
             <div id="donationGraphByState" class="col-sm-12 graph-div"></div>
             <div id="donationGraphCumulative" class="col-sm-12 graph-div"></div>
             <div id="donationGraphCumulativeState" class="col-sm-12 graph-div"></div>
+            <!--<div id="donationGraphWeekly" class="col-sm-12 graph-div"></div>-->
 
 
             <hr>
@@ -116,6 +120,8 @@ nav-order: 40
                 </small>
               </em>
             </p>
+
+            <h4 class="center"><a class="center btn btn-primary inline-block mx-auto" href="/donate/?utm_source=mainsite&utm_content=d4~{{ page.url | slugify }}">Donate Now!</a></h4>
 
             <div id="donationLogElm"></div>
             <script src="/js/bundle-donationLog.js"></script>
@@ -199,3 +205,4 @@ nav-order: 40
   </div>
 </div>
 {% include footer.html %}
+
